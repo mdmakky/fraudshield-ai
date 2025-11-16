@@ -1,12 +1,12 @@
-# FraudShield AI 🛡️# FraudShield AI - High Accuracy Fraud Detection# FraudShield AI 🛡️
+# FraudShield AI 🛡️# FraudShield AI 🛡️# FraudShield AI 🛡️
 
 
 
-**High-Accuracy Fraud Detection System for Financial Transactions**
+**AI-Powered Fraud Detection for Financial Transactions**
 
 
 
-A production-ready fraud detection system achieving **99.11% AUC accuracy** using XGBoost with advanced feature engineering. Detects fraudulent transactions in real-time through a FastAPI REST interface.A streamlined fraud detection system achieving 97%+ accuracy using ensemble machine learning.**Simple Fraud Detection System for Financial Transactions**
+Real-time fraud detection API using XGBoost with 97%+ accuracy on 5 million transactions.**AI-Powered Fraud Detection for Financial Transactions****AI-Powered Fraud Detection for Financial Transactions**
 
 
 
@@ -14,167 +14,528 @@ A production-ready fraud detection system achieving **99.11% AUC accuracy** usin
 
 
 
-## 📊 Overview## FeaturesDetect fraudulent transactions using Machine Learning with Logistic Regression, Random Forest, and XGBoost models.
+## ⚡ Quick Run (If You Have Models)Real-time fraud detection API using XGBoost with 97%+ accuracy on 5 million transactions.
 
 
 
-- **Dataset**: 5,000,000 financial transactions from Kaggle
-
-- **Fraud Rate**: 3.59% (highly imbalanced)
-
-- **Model**: XGBoost Classifier with 300 estimators- **97%+ Accuracy**: Ensemble of XGBoost, LightGBM, and CatBoost---
-
-- **Performance**: 99.11% ROC-AUC Score
-
-- **Features**: 50 engineered features from 26 base features- **Advanced Feature Engineering**: Statistical aggregations, interaction features, time-based features
-
-- **API**: FastAPI REST service for real-time predictions
-
-- **Memory Optimized**: Handles large datasets efficiently on 16GB RAM## 📊 Quick Overview
-
----
-
-- **REST API**: FastAPI-based prediction service
-
-## 🚀 Quick Start
-
-- **Production Ready**: Optimized hyperparameters and preprocessing- **Dataset**: 5M financial transactions from Kaggle
-
-### Prerequisites
-
-- **Models**: 3 ML models (LR, RF, XGBoost)
-
-- Python 3.8+
-
-- 16GB RAM (minimum)## Quick Start- **Features**: 18 columns (transaction details, behavioral scores, metadata)
-
-- Ubuntu/Linux (recommended) or Windows/macOS
-
-- **API**: FastAPI REST service for real-time predictions
-
-### 1. Clone the Repository
-
-1. **Install dependencies:**- **Goal**: Detect fraud with 90%+ recall
-
-```bash
-
-git clone <your-repo-url>   ```bash
-
-cd fraudshield-ai
-
-```   pip install -r requirements.txt---
+**Already have trained models in the `models/` folder?** Just run:
 
 
 
-### 2. Create Virtual Environment   ```
+```bash------
 
-
-
-```bash## 🚀 Quick Start (5 Minutes)
-
-# Create virtual environment
-
-python3 -m venv fraudshield-env2. **Place your data:**
-
-
-
-# Activate virtual environment   - Put `financial_fraud_detection_dataset.csv` in the `data/` directory### 1. Setup Environment
-
-# On Linux/macOS:
-
-source fraudshield-env/bin/activate
-
-
-
-# On Windows:3. **Train the model:**```bash
-
-fraudshield-env\Scripts\activate
-
-```   ```bash# Install dependencies
-
-
-
-### 3. Install Dependencies   python train.pypip install -r requirements.txt
-
-
-
-```bash   ``````
+# 1. Install dependencies
 
 pip install -r requirements.txt
 
-```
+
+
+# 2. Start the API## 🚀 Quick Start
+
+python api.py
+
+# or
+
+uvicorn api:app --host 0.0.0.0 --port 8000
+
+```**1. Setup**## 📊 Overview## FeaturesDetect fraudulent transactions using Machine Learning with Logistic Regression, Random Forest, and XGBoost models.
 
 
 
-### 4. Download Dataset4. **Start the API:**### 2. Download Dataset
+That's it! Your API is ready at `http://localhost:8000````bash
 
 
 
-1. Download the dataset from [Kaggle - Financial Fraud Detection Dataset](https://www.kaggle.com/datasets/computingvictor/transactions-fraud-datasets)   ```bash
+Visit `http://localhost:8000/docs` for interactive documentation.# Install dependencies
 
-2. Place `financial_fraud_detection_dataset.csv` in the `data/` directory
 
-   python api.py1. Go to: https://www.kaggle.com/datasets/aryan208/financial-transactions-dataset-for-fraud-detection
+
+---pip install -r requirements.txt
+
+
+
+## 🚀 Full Setup (From Scratch)```- **Dataset**: 5,000,000 financial transactions from Kaggle
+
+
+
+**1. Install Dependencies**
 
 ```bash
 
-mkdir -p data   ```2. Download `financial_fraud_detection_dataset.csv` (~796 MB)
+pip install -r requirements.txt**2. Get Dataset**- **Fraud Rate**: 3.59% (highly imbalanced)
 
-# Place your CSV file in data/
+```
 
-```3. Place in `data/` folder:
+- Download from [Kaggle](https://www.kaggle.com/datasets/aryan208/financial-transactions-dataset-for-fraud-detection)
+
+**2. Get Dataset**
+
+- Download from [Kaggle](https://www.kaggle.com/datasets/aryan208/financial-transactions-dataset-for-fraud-detection)- Place `financial_fraud_detection_dataset.csv` in `data/` folder- **Model**: XGBoost Classifier with 300 estimators- **97%+ Accuracy**: Ensemble of XGBoost, LightGBM, and CatBoost---
+
+- Place `financial_fraud_detection_dataset.csv` in `data/` folder
 
 
 
-### 5. Train the Model5. **Make predictions:**   ```bash
+**3. Train Model**
 
-
-
-```bash   ```bash   mv ~/Downloads/financial_fraud_detection_dataset.csv data/
+```bash**3. Train Model**- **Performance**: 99.11% ROC-AUC Score
 
 python train.py
 
-```   curl -X POST "http://localhost:8000/predict" \   ```
+``````bash
+
+This will create trained models in the `models/` folder (~5-10 minutes).
+
+python train.py- **Features**: 50 engineered features from 26 base features- **Advanced Feature Engineering**: Statistical aggregations, interaction features, time-based features
+
+**4. Start API**
+
+```bash```
+
+python api.py
+
+# or- **API**: FastAPI REST service for real-time predictions
+
+uvicorn api:app --host 0.0.0.0 --port 8000
+
+```**4. Start API**
 
 
 
-**Training Process:**     -H "Content-Type: application/json" \
-
-- Loads 5M transactions
-
-- Creates 50 advanced features     -d '{### 3. Train Models
-
-- Balances dataset (2:1 ratio)
-
-- Trains XGBoost model (~5 minutes)       "timestamp": "2024-01-01 12:00:00",
-
-- Saves model to `models/` directory
-
-       "sender_account": "acc123",```bash
-
-**Expected Output:**
-
-```       "receiver_account": "acc456",# Quick test (100k samples, ~5 minutes)
-
-=== FraudShield AI - High Accuracy Training ===
-
-...       "amount": 1000.0,python src/train_models.py --sample 100000
-
-ROC-AUC Score: 0.9911
-
-🎉 ACHIEVED TARGET ACCURACY! 🎉       "transaction_type": "transfer",
-
-```
-
-       "merchant_category": "online_shopping",# Full training (~30-60 minutes)
-
-### 6. Start the API Server
-
-       "location": "New York",python src/train_models.py
+**5. Test It**```bash- **Memory Optimized**: Handles large datasets efficiently on 16GB RAM## 📊 Quick Overview
 
 ```bash
 
-python3 -m uvicorn api:app --host 0.0.0.0 --port 8000       "device_used": "mobile",```
+curl http://localhost:8000/healthpython api.py
+
+```
+
+# or---
+
+Visit `http://localhost:8000/docs` for interactive API documentation.
+
+uvicorn api:app --host 0.0.0.0 --port 8000
+
+---
+
+```- **REST API**: FastAPI-based prediction service
+
+## 📊 What It Does
+
+
+
+- **Detects** fraudulent transactions in real-time
+
+- **Achieves** 97%+ ROC-AUC score**5. Test It**## 🚀 Quick Start
+
+- **Analyzes** 50+ features per transaction
+
+- **Provides** fraud probability and confidence level```bash
+
+
+
+---curl http://localhost:8000/health- **Production Ready**: Optimized hyperparameters and preprocessing- **Dataset**: 5M financial transactions from Kaggle
+
+
+
+## 🔧 API Usage```
+
+
+
+**Check Health:**### Prerequisites
+
+```bash
+
+curl http://localhost:8000/healthVisit `http://localhost:8000/docs` for interactive API documentation.
+
+```
+
+- **Models**: 3 ML models (LR, RF, XGBoost)
+
+**Predict Fraud:**
+
+```bash---
+
+curl -X POST "http://localhost:8000/predict" \
+
+  -H "Content-Type: application/json" \- Python 3.8+
+
+  -d '{
+
+    "timestamp": "2024-01-15T10:30:00",## 📊 What It Does
+
+    "sender_account": "ACC123",
+
+    "receiver_account": "ACC456",- 16GB RAM (minimum)## Quick Start- **Features**: 18 columns (transaction details, behavioral scores, metadata)
+
+    "amount": 1500.0,
+
+    "transaction_type": "transfer",- **Detects** fraudulent transactions in real-time
+
+    "merchant_category": "online",
+
+    "location": "New York",- **Achieves** 97%+ ROC-AUC score- Ubuntu/Linux (recommended) or Windows/macOS
+
+    "device_used": "mobile",
+
+    "payment_channel": "app",- **Analyzes** 50+ features per transaction
+
+    "time_since_last_transaction": 300.0,
+
+    "spending_deviation_score": 3.5,- **Provides** fraud probability and confidence level- **API**: FastAPI REST service for real-time predictions
+
+    "velocity_score": 18.0,
+
+    "geo_anomaly_score": 0.9
+
+  }'
+
+```---### 1. Clone the Repository
+
+
+
+**Response:**
+
+```json
+
+{## 🔧 API Usage1. **Install dependencies:**- **Goal**: Detect fraud with 90%+ recall
+
+  "is_fraud": true,
+
+  "fraud_probability": 0.94,
+
+  "confidence": "high"
+
+}**Check Health:**```bash
+
+```
+
+```bash
+
+---
+
+curl http://localhost:8000/healthgit clone <your-repo-url>   ```bash
+
+## 📁 Project Structure
+
+```
+
+```
+
+fraudshield-ai/cd fraudshield-ai
+
+├── api.py                 # FastAPI server
+
+├── train.py              # Model training**Predict Fraud:**
+
+├── requirements.txt      # Dependencies
+
+├── data/                 # Dataset folder```bash```   pip install -r requirements.txt---
+
+│   └── financial_fraud_detection_dataset.csv
+
+└── models/               # Trained models (from GitHub or training)curl -X POST "http://localhost:8000/predict" \
+
+    ├── fraud_detection_model.joblib
+
+    ├── label_encoders.joblib  -H "Content-Type: application/json" \
+
+    └── feature_columns.joblib
+
+```  -d '{
+
+
+
+---    "timestamp": "2024-01-15T10:30:00",### 2. Create Virtual Environment   ```
+
+
+
+## 🎯 Model Performance    "sender_account": "ACC123",
+
+
+
+- **ROC-AUC:** 97%+    "receiver_account": "ACC456",
+
+- **Precision:** 95%+  
+
+- **Recall:** 90%+    "amount": 1500.0,
+
+- **Algorithm:** XGBoost with 300 estimators
+
+- **Features:** 50+ engineered features    "transaction_type": "transfer",```bash## 🚀 Quick Start (5 Minutes)
+
+- **Dataset:** 5M transactions
+
+    "merchant_category": "online",
+
+---
+
+    "location": "New York",# Create virtual environment
+
+## 🔍 Key Features
+
+    "device_used": "mobile",
+
+- Advanced feature engineering (time-based, statistical aggregations)
+
+- Balanced dataset (2:1 ratio with SMOTE)    "payment_channel": "app",python3 -m venv fraudshield-env2. **Place your data:**
+
+- Network analysis (account relationships)
+
+- Risk scoring (velocity, deviation, geo-anomaly)    "time_since_last_transaction": 300.0,
+
+- Production-ready REST API
+
+    "spending_deviation_score": 3.5,
+
+---
+
+    "velocity_score": 18.0,
+
+## 🛠️ Tech Stack
+
+    "geo_anomaly_score": 0.9# Activate virtual environment   - Put `financial_fraud_detection_dataset.csv` in the `data/` directory### 1. Setup Environment
+
+- **Python 3.8+**
+
+- **XGBoost** - Gradient boosting  }'
+
+- **FastAPI** - REST API
+
+- **Pandas/NumPy** - Data processing```# On Linux/macOS:
+
+- **Scikit-learn** - ML utilities
+
+
+
+---
+
+**Response:**source fraudshield-env/bin/activate
+
+## 📖 Requirements
+
+```json
+
+```
+
+pandas>=2.0.0{
+
+numpy>=1.24.0
+
+scikit-learn>=1.3.0  "is_fraud": true,
+
+xgboost>=2.0.0
+
+fastapi>=0.100.0  "fraud_probability": 0.94,# On Windows:3. **Train the model:**```bash
+
+uvicorn>=0.20.0
+
+```  "confidence": "high"
+
+
+
+---}fraudshield-env\Scripts\activate
+
+
+
+## 💡 Common Issues```
+
+
+
+**Port already in use:**```   ```bash# Install dependencies
+
+```bash
+
+kill $(lsof -t -i:8000)---
+
+```
+
+
+
+**Model not found:**
+
+```bash## 📁 Project Structure
+
+python train.py  # Train models first
+
+```### 3. Install Dependencies   python train.pypip install -r requirements.txt
+
+
+
+**Import errors:**```
+
+```bash
+
+pip install -r requirements.txtfraudshield-ai/
+
+```
+
+├── api.py                 # FastAPI server
+
+---
+
+├── train.py              # Model training```bash   ``````
+
+## 📝 License
+
+├── requirements.txt      # Dependencies
+
+MIT License
+
+├── data/                 # Dataset folderpip install -r requirements.txt
+
+---
+
+│   └── financial_fraud_detection_dataset.csv
+
+**Built with ❤️ for secure financial transactions**
+
+└── models/               # Trained models (auto-generated)```
+
+    ├── fraud_detection_model.joblib
+
+    ├── label_encoders.joblib
+
+    └── feature_columns.joblib
+
+```### 4. Download Dataset4. **Start the API:**### 2. Download Dataset
+
+
+
+---
+
+
+
+## 🎯 Model Performance1. Download the dataset from [Kaggle - Financial Fraud Detection Dataset](https://www.kaggle.com/datasets/computingvictor/transactions-fraud-datasets)   ```bash
+
+
+
+- **ROC-AUC:** 97%+2. Place `financial_fraud_detection_dataset.csv` in the `data/` directory
+
+- **Precision:** 95%+  
+
+- **Recall:** 90%+   python api.py1. Go to: https://www.kaggle.com/datasets/aryan208/financial-transactions-dataset-for-fraud-detection
+
+- **Algorithm:** XGBoost with 300 estimators
+
+- **Features:** 50+ engineered features```bash
+
+- **Dataset:** 5M transactions
+
+mkdir -p data   ```2. Download `financial_fraud_detection_dataset.csv` (~796 MB)
+
+---
+
+# Place your CSV file in data/
+
+## 🔍 Key Features
+
+```3. Place in `data/` folder:
+
+- Advanced feature engineering (time-based, statistical aggregations)
+
+- Balanced dataset (2:1 ratio with SMOTE)
+
+- Network analysis (account relationships)
+
+- Risk scoring (velocity, deviation, geo-anomaly)### 5. Train the Model5. **Make predictions:**   ```bash
+
+- Production-ready REST API
+
+
+
+---
+
+```bash   ```bash   mv ~/Downloads/financial_fraud_detection_dataset.csv data/
+
+## 🛠️ Tech Stack
+
+python train.py
+
+- **Python 3.8+**
+
+- **XGBoost** - Gradient boosting```   curl -X POST "http://localhost:8000/predict" \   ```
+
+- **FastAPI** - REST API
+
+- **Pandas/NumPy** - Data processing
+
+- **Scikit-learn** - ML utilities
+
+**Training Process:**     -H "Content-Type: application/json" \
+
+---
+
+- Loads 5M transactions
+
+## 📖 Requirements
+
+- Creates 50 advanced features     -d '{### 3. Train Models
+
+```
+
+pandas>=2.0.0- Balances dataset (2:1 ratio)
+
+numpy>=1.24.0
+
+scikit-learn>=1.3.0- Trains XGBoost model (~5 minutes)       "timestamp": "2024-01-01 12:00:00",
+
+xgboost>=2.0.0
+
+fastapi>=0.100.0- Saves model to `models/` directory
+
+uvicorn>=0.20.0
+
+```       "sender_account": "acc123",```bash
+
+
+
+---**Expected Output:**
+
+
+
+## 💡 Common Issues```       "receiver_account": "acc456",# Quick test (100k samples, ~5 minutes)
+
+
+
+**Port already in use:**=== FraudShield AI - High Accuracy Training ===
+
+```bash
+
+kill $(lsof -t -i:8000)...       "amount": 1000.0,python src/train_models.py --sample 100000
+
+```
+
+ROC-AUC Score: 0.9911
+
+**Model not found:**
+
+```bash🎉 ACHIEVED TARGET ACCURACY! 🎉       "transaction_type": "transfer",
+
+python train.py  # Train first
+
+``````
+
+
+
+---       "merchant_category": "online_shopping",# Full training (~30-60 minutes)
+
+
+
+## 📝 License### 6. Start the API Server
+
+
+
+MIT License       "location": "New York",python src/train_models.py
+
+
+
+---```bash
+
+
+
+**Built with ❤️ for secure financial transactions**python3 -m uvicorn api:app --host 0.0.0.0 --port 8000       "device_used": "mobile",```
+
 
 ```
 
